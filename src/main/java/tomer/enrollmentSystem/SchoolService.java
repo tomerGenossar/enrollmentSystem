@@ -10,9 +10,9 @@ import java.util.List;
  */
 @Service
 public class SchoolService {
-    private List<School> schoolsList = new ArrayList<>();
+    private static List<School> schoolsList = new ArrayList<>();
 
-    public List<School> getAllStudents()
+    public static List<School> getAllStudents()
     {
         return schoolsList;
     }

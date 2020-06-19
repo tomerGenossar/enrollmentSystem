@@ -1,6 +1,5 @@
 package tomer.enrollmentSystem;
 
-import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,5 +96,13 @@ public class School {
     {
         newStudent.setSchoolId(Id);
         studentsEnrolled.add(newStudent);
+    }
+
+    @Override
+    public String toString() {
+        String repr;
+        repr = "Id: "+Id+" lat: "+lat+" Lon: "+lon+ " min GPA: "+minimumGpa+ " max number of pupils: "+
+                maxNumberOfPupils;
+        return repr;
     }
 }

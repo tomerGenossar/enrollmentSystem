@@ -1,5 +1,6 @@
 package tomer.enrollmentSystem;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -9,6 +10,9 @@ import java.util.*;
  */
 @Service
 public class PupilService {
+
+//    @Autowired
+//    PupilRepo pupilRepository;
 
     private List<Pupil> pupilsList = new ArrayList<>();
 
@@ -26,6 +30,7 @@ public class PupilService {
      */
     public long addPupil(Pupil curPupil, boolean isSchoolEmpty)
     {
+//        pupilRepository.save(curPupil);
         curPupil.setId();
         pupilsList.add(curPupil);
         if (pupilsList.size() == 1 && isSchoolEmpty )

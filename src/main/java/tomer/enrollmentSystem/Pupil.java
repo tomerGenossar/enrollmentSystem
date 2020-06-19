@@ -2,8 +2,7 @@ package tomer.enrollmentSystem;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +46,7 @@ public class Pupil {
         public int getgrade() {
             return grade;
         }
+
         public void setgrade(int grade)
         {
             this.grade = grade;
@@ -63,7 +63,7 @@ public class Pupil {
         this.Lat = Lat;
         Lon = lon;
         Grades = courses;
-        setId();
+//        setId();
     }
 
     public void setGrades(List<CourseInfo> grades)
@@ -76,6 +76,15 @@ public class Pupil {
         this.id = idCounter ;
         idCounter+=1;
     }
+//    public void setid(Long id)
+//    {
+//        this.id = id;
+//    }
+    public Long getid(Long id)
+    {
+        return id;
+    }
+
     public long getId()
     {
         return id;
@@ -99,6 +108,13 @@ public class Pupil {
             sum += course.getgrade();
         }
         return sum/counter;
+    }
+
+    @Override
+    public String toString() {
+        String repr;
+        repr = "Id: "+id+" lat: "+Lat+" Lon: "+Lon;
+        return repr;
     }
 
     @JsonProperty("Lat")

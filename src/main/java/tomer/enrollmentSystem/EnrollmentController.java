@@ -13,7 +13,8 @@ import java.util.List;
 @RestController
 //@RequestMapping("/api")
 public class EnrollmentController {
-    private static String indexPageBeginning ="<!DOCTYPE html>\n" +
+
+    private static String beforeCenter = "<!DOCTYPE html>\n" +
             "<html>\n" +
             "<head>\n" +
             "<meta charset='utf-8' />\n" +
@@ -32,10 +33,11 @@ public class EnrollmentController {
             "<script>\n" +
             "mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnliMTIzIiwiYSI6ImNqMGljZ256dzAwMDAycXBkdWxwbDgzeXYifQ.Ck5P-0NKPVKAZ6SH98gxxw';\n" +
             "var map = new mapboxgl.Map({\n" +
-            "container: 'map',\n" +
-            "style: 'mapbox://styles/mapbox/light-v10',\n" +
-            "center: [34.5, 32],\n" +
-            "zoom: 6\n" +
+            "container: 'map',\n" ;
+
+    public static String style = "style: 'mapbox://styles/mapbox/streets-v10',\n";
+    public static String center = "center: [34.5, 32],\n";
+    public static String afterCenter =  "zoom: 6\n" +
             "});\n" +
             " \n" +
             "map.on('load', function () {\n" +
@@ -80,7 +82,13 @@ public class EnrollmentController {
     @RequestMapping("/")
     public String homePage()
     {
-        return indexPageBeginning + IndexPageLocationData + indexPageEnd;
+        return beforeCenter +style +center +afterCenter + IndexPageLocationData + indexPageEnd;
+    }
+
+    @RequestMapping("/manager")
+    public String systemManager()
+    {
+        return "8888";
     }
 
 

@@ -5,6 +5,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
+import tomer.enrollmentSystem.Pupil;
 
 import java.util.logging.Logger;
 
@@ -19,19 +20,40 @@ public class Logging {
 
     @Before("execution(* tomer.enrollmentSystem.PupilService*.*(..))")
     public void beforePupilService(JoinPoint joinPoint){
-        //Advice
-        logger.info("Before execution by user of {}", joinPoint);
+        int counter = 1;
+        logger.info(" before {}", joinPoint);
+        if (joinPoint.getArgs()!= null)
+        {
+            for (Object arg :joinPoint.getArgs()) {
+                logger.info("Input data for {} , arg number {} is {}",joinPoint,counter, arg );
+                counter++;
+            }
+        }
     }
 
     @Before("execution(* tomer.enrollmentSystem.SchoolService*.*(..))")
     public void beforeSchoolService(JoinPoint joinPoint){
-        //Advice
-        logger.info("Before execution by user of {}", joinPoint);
+        int counter = 1;
+        logger.info(" before {}", joinPoint);
+        if (joinPoint.getArgs()!= null)
+        {
+            for (Object arg :joinPoint.getArgs()) {
+                logger.info("Input data for {} , arg number {} is {}",joinPoint,counter, arg );
+                counter++;
+            }
+        }
     }
 
     @Before("execution(* tomer.enrollmentSystem.Friends*.*(..))")
     public void beforeFriends(JoinPoint joinPoint){
-        //Advice
-        logger.info("Before execution by user of {}", joinPoint);
+        int counter = 1;
+        logger.info(" before {}", joinPoint);
+        if (joinPoint.getArgs()!= null)
+        {
+            for (Object arg :joinPoint.getArgs()) {
+                logger.info("Input data for {} , arg number {} is {}",joinPoint,counter, arg );
+                counter++;
+            }
+        }
     }
 }
