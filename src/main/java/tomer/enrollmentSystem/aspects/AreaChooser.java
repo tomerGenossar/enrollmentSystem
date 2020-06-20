@@ -33,6 +33,4 @@ public class AreaChooser {
             logger.info("Focused map center at last school at: "+loc);
         }
     }
-
-
 }
