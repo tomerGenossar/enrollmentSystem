@@ -14,7 +14,7 @@ public class PupilService {
 //    @Autowired
 //    PupilRepo pupilRepository;
 
-    private List<Pupil> pupilsList = new ArrayList<>();
+    private static List<Pupil> pupilsList = new ArrayList<>();
 
     public List<Pupil> getAllStudents()
     {
@@ -30,7 +30,6 @@ public class PupilService {
      */
     public long addPupil(Pupil curPupil, boolean isSchoolEmpty)
     {
-//        pupilRepository.save(curPupil);
         curPupil.setId();
         pupilsList.add(curPupil);
         if (pupilsList.size() == 1 && isSchoolEmpty )
@@ -66,7 +65,7 @@ public class PupilService {
         return curPupil.getId();
     }
 
-    public Pupil getPupil(long pupilId)
+    public static Pupil getPupil(long pupilId)
     {
         for (Pupil curPupil: pupilsList)
         {

@@ -13,12 +13,8 @@ public class EnrollmentSystemApplication {
 
 
 	public static void main(String[] args) {
-		init();
 		SpringApplication.run(EnrollmentSystemApplication.class, args);
 	}
 
-	public static void init() {
-		System.out.println("test");
-	}
 
 }

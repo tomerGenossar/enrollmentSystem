@@ -4,6 +4,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import tomer.enrollmentSystem.EnrollmentController;
@@ -19,9 +20,11 @@ import java.util.List;
 @Configuration
 public class AreaChooser {
 
+
+
     private org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
-    @Before("execution(* tomer.enrollmentSystem.EnrollmentController.homePage(..))")
-    public void focusSchoolLocation(JoinPoint joinPoint){
+    @Before("tomer.enrollmentSystem.aspects.Pointcuts.homePage()")
+    public void focusSchoolLocation(){
         List<School> schools = SchoolService.getAllStudents();
         if (!schools.isEmpty())
         {

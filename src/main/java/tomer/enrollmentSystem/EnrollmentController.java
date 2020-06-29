@@ -85,17 +85,19 @@ public class EnrollmentController {
         return beforeCenter +style +center +afterCenter + IndexPageLocationData + indexPageEnd;
     }
 
-    @RequestMapping("/manager")
-    public String systemManager()
-    {
-        return "8888";
-    }
+//    @RequestMapping("/manager")
+//    public String systemManager()
+//    {
+//        return "8888";
+//    }
 
 
     @RequestMapping("/pupils")
-    public List<Pupil> pupils()
+    public String pupils()
     {
-        return pupilService.getAllStudents();
+//        Pupil temp = pupilService.getPupil(15);
+//        long id = temp.getId();
+        return pupilService.getAllStudents().toString();
     }
 
     /**
@@ -127,9 +129,9 @@ public class EnrollmentController {
     }
 
     @RequestMapping("/schools")
-    public List<School> schools()
+    public String schools()
     {
-        return schoolService.getAllStudents();
+        return schoolService.getAllStudents().toString();
     }
 
     /**
@@ -289,7 +291,8 @@ public class EnrollmentController {
      * @param lat2
      * @param lon2
      */
-    private double calculateEnrollmentFormula(Long friendsNum, Double lat1, Double lon1, Double lat2, Double
+    public static double calculateEnrollmentFormula(Long friendsNum, Double lat1, Double lon1, Double lat2,
+                                                Double
             lon2)
     {
         final int R = 6371; // Radius of the earth

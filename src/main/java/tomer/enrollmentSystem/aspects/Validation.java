@@ -8,6 +8,7 @@ import tomer.enrollmentSystem.LocationValidation;
 import tomer.enrollmentSystem.Pupil;
 import tomer.enrollmentSystem.School;
 
+
 /**
  * Created by Tomer on 18/06/2020.
  */
@@ -45,6 +46,20 @@ public class Validation {
             throwable.printStackTrace();
         }
         return creationFailed;
+    }
+
+    @Around("execution(* tomer.enrollmentSystem.Pupil.CourseInfo.setgrade(..))")
+    public void validateGrades(ProceedingJoinPoint proceedingJoinPoint) {
+        Object[] setGradesArgs = proceedingJoinPoint.getArgs();
+        long grade = (long) setGradesArgs[0];
+        if ((0<=grade) && (grade <= 100))
+        {
+            try {
+                proceedingJoinPoint.proceed();
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
+        }
     }
 }
 

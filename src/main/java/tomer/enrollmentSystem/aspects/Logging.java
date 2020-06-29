@@ -18,10 +18,18 @@ import java.util.logging.Logger;
 public class Logging {
     private org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    @Pointcut("execution(* tomer.enrollmentSystem.PupilService*.*(..))")
+    public void pupilServicePointcut() { }
 
-    @Before("execution(* tomer.enrollmentSystem.PupilService*.*(..)) || execution(* tomer.enrollmentSystem" +
-            ".SchoolService*.*(..)) || execution(* tomer.enrollmentSystem.Friends*.*(..))")
-    public void beforePupilService(JoinPoint joinPoint) {
+    @Pointcut("execution(* tomer.enrollmentSystem.SchoolService*.*(..))")
+    public void schoolServicePointcut() { }
+
+    @Pointcut("execution(* tomer.enrollmentSystem.SchoolService*.*(..))")
+    public void friendsServicePointcut() { }
+
+    @Before("pupilServicePointcut()|| schoolServicePointcut() || friendsServicePointcut()")
+    public void createServiceLog(JoinPoint joinPoint)
+    {
         int counter = 1;
         logger.info(" before {}", joinPoint);
         if (joinPoint.getArgs() != null) {
@@ -31,5 +39,18 @@ public class Logging {
             }
         }
     }
+
+//    @Before("execution(* tomer.enrollmentSystem.PupilService*.*(..)) || execution(* tomer.enrollmentSystem" +
+//            ".SchoolService*.*(..)) || execution(* tomer.enrollmentSystem.Friends*.*(..))")
+//    public void beforePupilService(JoinPoint joinPoint) {
+//        int counter = 1;
+//        logger.info(" before {}", joinPoint);
+//        if (joinPoint.getArgs() != null) {
+//            for (Object arg : joinPoint.getArgs()) {
+//                logger.info("Input data for {} , arg number {} is {}", joinPoint, counter, arg);
+//                counter++;
+//            }
+//        }
+//    }
 }
 
